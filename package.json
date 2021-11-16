@@ -23,5 +23,8 @@
     "gulp-babel": "^8.0.0",
     "gulp-sass": "^5.0.0",
     "sass": "^1.43.4"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }
