@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  padding: 0;
 }
 
 img,
@@ -11,6 +12,38 @@ video {
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
+  color: #324755;
+}
+
+.Nav {
+  padding: 2em;
+}
+.Nav .Nav__ul {
+  justify-content: space-between;
+  display: flex;
+}
+.Nav .Nav__ul-li {
+  list-style-type: none;
+  color: #324755;
+}
+.Nav .Nav__ul-li a {
+  text-decoration: none;
+  color: #324755;
+}
+
+.Header__div {
+  border-top: 1px solid #e0e1e2;
+  border-bottom: 1px solid #e0e1e2;
+  padding: 0.7em;
+}
+
+input {
+  width: 100%;
+  border: none;
+  background-color: #f0f3f4;
+  padding: 0.5em;
+  border-radius: 5px;
 }
