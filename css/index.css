@@ -4,9 +4,10 @@
   border-bottom: 1px solid #e0e1e2;
   border-top: 1px solid #e0e1e2;
 }
-.Section__article-div h1 {
+.Section__article-div .headLineLarge {
   padding-bottom: 0.7em;
   font-size: 15px;
+  color: red;
 }
 .Section__article-div .Div__dropDown {
   margin: auto;

@@ -39,12 +39,15 @@ body {
   padding: 0.7em;
 }
 
-input {
+.Div__input {
   width: 100%;
   border: none;
   background-color: #f0f3f4;
   padding: 0.5em;
   border-radius: 5px;
+  background-image: url(/images/searchIcon.png);
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 /*LIGHT AND DARK MODE*/
