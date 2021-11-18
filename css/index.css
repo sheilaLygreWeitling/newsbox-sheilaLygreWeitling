@@ -20,7 +20,7 @@
 }
 
 .headLineLarge {
-  padding-bottom: 0.7em;
   font-size: 15px;
   color: #324755;
+  text-transform: uppercase;
 }

@@ -2,12 +2,13 @@
 
 var newsURL = window.location.search;
 var params = new URLSearchParams(newsURL);
-var newsCategory = params.get("/home.json");
-var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
-var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
-axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F").then(function (response) {
-  var news = response.data.results;
-  news.forEach(function (newsElement) {
+var newsCategory = params.get("/health.json");
+var myAPIKeyHealth = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
+var urlHealth = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=" + myAPIKeyHealth;
+axios.get("https://api.nytimes.com/svc/topstories/v2/health.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F").then(function (response) {
+  var newsHealth = response.data.results;
+  console.log(response);
+  newsHealth.forEach(function (newsElement) {
     var main = document.querySelector(".Main");
     var section = document.createElement("section");
     section.classList.add("Section");
@@ -19,8 +20,6 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     div.classList.add("Div");
     var headLine = document.createElement("h1");
     headLine.classList.add("headLineLarge");
-    var dropDownDiv = document.createElement("div");
-    dropDownDiv.classList.add("Div__dropDown");
     var dropDownButton = document.createElement("button");
     dropDownButton.classList.add("Div__dropDown-button");
     var dropDownIcon = document.createElement("i");
@@ -32,8 +31,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     article.appendChild(div);
     div.appendChild(headLine);
     headLine.appendChild(newsNode);
-    article.appendChild(dropDownDiv);
-    dropDownDiv.appendChild(dropDownButton);
+    div.appendChild(dropDownButton);
     dropDownButton.appendChild(dropDownIcon);
   });
 });

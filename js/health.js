@@ -1,15 +1,17 @@
 let newsURL = window.location.search;
 let params = new URLSearchParams(newsURL);
-let newsCategory = params.get("/home.json");
+let newsCategory = params.get("/health.json");
 
-let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
-let url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey
+let myAPIKeyHealth = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
+let urlHealth = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=" + myAPIKeyHealth
 
-axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")
+axios.get("https://api.nytimes.com/svc/topstories/v2/health.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")
     .then((response) => {
-        const news = response.data.results;
+        const newsHealth = response.data.results;
 
-        news.forEach(newsElement => {
+        console.log(response);
+
+        newsHealth.forEach(newsElement => {
             const main = document.querySelector(".Main")
 
             let section = document.createElement("section")
@@ -27,8 +29,6 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             let headLine = document.createElement("h1")
             headLine.classList.add("headLineLarge")
 
-            let dropDownDiv = document.createElement("div")
-            dropDownDiv.classList.add("Div__dropDown")
 
             let dropDownButton = document.createElement("button")
             dropDownButton.classList.add("Div__dropDown-button")
@@ -44,8 +44,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             article.appendChild(div);
             div.appendChild(headLine);
             headLine.appendChild(newsNode);
-            article.appendChild(dropDownDiv);
-            dropDownDiv.appendChild(dropDownButton);
+            div.appendChild(dropDownButton);
             dropDownButton.appendChild(dropDownIcon);
         });
     });
