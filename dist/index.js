@@ -6,7 +6,7 @@ var newsCategory = params.get("/home.json");
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
 axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F").then(function (response) {
-  var news = [];
+  var news = response.data.results;
   news.forEach(function (newsElement) {
     var main = document.querySelector(".Main");
     var section = document.createElement("section");
@@ -25,7 +25,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     dropDownButton.classList.add("Div__dropDown-button");
     var dropDownIcon = document.createElement("i");
     dropDownIcon.classList.add("fas", "fa-chevron-down");
-    var newsNode = document.createTextNode("health");
+    var newsNode = document.createTextNode(newsElement.section);
     main.appendChild(section);
     section.appendChild(article);
     article.appendChild(divSectionArticleDiv);

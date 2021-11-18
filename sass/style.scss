@@ -1,6 +1,5 @@
 * {
 	box-sizing: border-box;
-
 	padding: 0;
 }
 
@@ -13,7 +12,6 @@ video {
 
 html,
 body {
-	background-color: white;
 	font-family: "Roboto", sans-serif;
 	margin: 0 auto;
 	color: #324755;
@@ -47,4 +45,19 @@ input {
 	background-color: #f0f3f4;
 	padding: 0.5em;
 	border-radius: 5px;
+}
+
+/*LIGHT AND DARK MODE*/
+// by default dark theme
+
+:root {
+	background-color: #e8e6dc;
+	color: #3d3d3d;
+}
+
+// light theme colors
+
+.lightMode {
+	background-color: #171923;
+	color: #c5cddb;
 }

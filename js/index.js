@@ -7,7 +7,7 @@ let url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPI
 
 axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")
     .then((response) => {
-        const news = [];
+        const news = response.data.results;
 
         news.forEach(newsElement => {
             const main = document.querySelector(".Main")
@@ -36,7 +36,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             let dropDownIcon = document.createElement("i")
             dropDownIcon.classList.add("fas", "fa-chevron-down")
 
-            let newsNode = document.createTextNode("health");
+            let newsNode = document.createTextNode(newsElement.section);
 
             main.appendChild(section);
             section.appendChild(article);
