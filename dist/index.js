@@ -19,8 +19,6 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     div.classList.add("Div");
     var headLine = document.createElement("h1");
     headLine.classList.add("headLineLarge");
-    var dropDownDiv = document.createElement("div");
-    dropDownDiv.classList.add("Div__dropDown");
     var dropDownButton = document.createElement("button");
     dropDownButton.classList.add("Div__dropDown-button");
     var dropDownIcon = document.createElement("i");
@@ -32,10 +30,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     article.appendChild(div);
     div.appendChild(headLine);
     headLine.appendChild(newsNode);
-    /* document.getElementsByClassName("headLine").appendChild(headLineLarge); */
-
-    article.appendChild(dropDownDiv);
-    dropDownDiv.appendChild(dropDownButton);
+    div.appendChild(dropDownButton);
     dropDownButton.appendChild(dropDownIcon);
   });
 });

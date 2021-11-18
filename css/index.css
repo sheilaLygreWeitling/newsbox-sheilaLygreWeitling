@@ -4,20 +4,23 @@
   border-bottom: 1px solid #e0e1e2;
   border-top: 1px solid #e0e1e2;
 }
-.Section__article-div .headLineLarge {
-  padding-bottom: 0.7em;
-  font-size: 15px;
-  color: red;
+
+.Div {
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
 }
-.Section__article-div .Div__dropDown {
-  margin: auto;
-  padding-left: 40%;
-}
-.Section__article-div .Div__dropDown-button {
+.Div .Div__dropDown-button {
   border: none;
   background-color: white;
   color: #324755;
 }
-.Section__article-div .fas {
+.Div .fas {
   font-size: 20px;
+}
+
+.headLineLarge {
+  padding-bottom: 0.7em;
+  font-size: 15px;
+  color: #324755;
 }

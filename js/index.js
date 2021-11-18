@@ -27,9 +27,6 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             let headLine = document.createElement("h1")
             headLine.classList.add("headLineLarge")
 
-            let dropDownDiv = document.createElement("div")
-            dropDownDiv.classList.add("Div__dropDown")
-
             let dropDownButton = document.createElement("button")
             dropDownButton.classList.add("Div__dropDown-button")
 
@@ -43,12 +40,8 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             article.appendChild(divSectionArticleDiv);
             article.appendChild(div);
             div.appendChild(headLine);
-
             headLine.appendChild(newsNode);
-            /* document.getElementsByClassName("headLine").appendChild(headLineLarge); */
-
-            article.appendChild(dropDownDiv);
-            dropDownDiv.appendChild(dropDownButton);
+            div.appendChild(dropDownButton);
             dropDownButton.appendChild(dropDownIcon);
         });
     });

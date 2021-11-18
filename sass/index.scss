@@ -3,15 +3,11 @@
 	align-items: center;
 	border-bottom: 1px solid #e0e1e2;
 	border-top: 1px solid #e0e1e2;
-	.headLineLarge {
-		padding-bottom: 0.7em;
-		font-size: 15px;
-		color: red;
-	}
-	.Div__dropDown {
-		margin: auto;
-		padding-left: 40%;
-	}
+}
+.Div {
+	padding: 0.5em;
+	display: flex;
+	justify-content: space-between;
 	.Div__dropDown-button {
 		border: none;
 		background-color: white;
@@ -20,4 +16,10 @@
 	.fas {
 		font-size: 20px;
 	}
+}
+
+.headLineLarge {
+	padding-bottom: 0.7em;
+	font-size: 15px;
+	color: #324755;
 }
