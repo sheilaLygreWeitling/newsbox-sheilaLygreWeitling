@@ -1,15 +1,15 @@
+section {
+	display: grid;
+}
+
 .Section__article-div {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	border-bottom: 1px solid #e0e1e2;
 	border-top: 1px solid #e0e1e2;
 	padding: 0.5em;
-}
-
-.Div {
-	padding: 0.5em;
-	display: flex;
-	justify-content: space-between;
+	z-index: 10;
 	.Div__dropDown-button {
 		border: none;
 		background-color: white;
@@ -18,10 +18,31 @@
 	.fas {
 		font-size: 20px;
 	}
+	.headLineLarge {
+		font-size: 15px;
+		color: #324755;
+		text-transform: uppercase;
+	}
 }
 
-.headLineLarge {
-	font-size: 15px;
-	color: #324755;
-	text-transform: uppercase;
+.Section__article-div-delete {
+	background-color: red;
+	height: 66px;
+	z-index: 1;
+	.Section__article-div-delete::before {
+		font-family: "Font Awesome 5 Free";
+		content: "\f1f8";
+	}
+}
+
+.dropDownNewsParagraph {
+	display: none;
+}
+
+.collapsed {
+	height: 0;
+}
+
+.open {
+	height: 20vh;
 }
