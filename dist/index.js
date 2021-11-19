@@ -7,6 +7,8 @@ var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
 axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F").then(function (response) {
   var news = response.data.results;
+  var newsDropDown = response.data.results.title;
+  console.log(response);
   news.forEach(function (newsElement) {
     var main = document.querySelector(".Main");
     var section = document.createElement("section");
@@ -21,9 +23,12 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     headLine.classList.add("headLineLarge");
     var dropDownButton = document.createElement("button");
     dropDownButton.classList.add("Div__dropDown-button");
+    var dropDownNews = document.createElement("div");
+    dropDownNews.classList.add("animate__fadeOutDown");
     var dropDownIcon = document.createElement("i");
     dropDownIcon.classList.add("fas", "fa-chevron-down");
     var newsNode = document.createTextNode(newsElement.section);
+    var newsDropDownNode = document.createTextNode(newsElement.title);
     main.appendChild(section);
     section.appendChild(article);
     article.appendChild(divSectionArticleDiv);
@@ -32,6 +37,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     headLine.appendChild(newsNode);
     div.appendChild(dropDownButton);
     dropDownButton.appendChild(dropDownIcon);
+    dropDownNews.appendChild(newsDropDownNode);
   });
 });
 /* const newsSection = document.querySelector(".Main")

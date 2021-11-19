@@ -8,7 +8,8 @@ let url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPI
 axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")
     .then((response) => {
         const news = response.data.results;
-
+        const newsDropDown = response.data.results.title
+        console.log(response);
         news.forEach(newsElement => {
             const main = document.querySelector(".Main")
 
@@ -27,14 +28,18 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             let headLine = document.createElement("h1")
             headLine.classList.add("headLineLarge")
 
-
             let dropDownButton = document.createElement("button")
             dropDownButton.classList.add("Div__dropDown-button")
+
+            let dropDownNews = document.createElement("div")
+            dropDownNews.classList.add("animate__fadeOutDown")
 
             let dropDownIcon = document.createElement("i")
             dropDownIcon.classList.add("fas", "fa-chevron-down")
 
             let newsNode = document.createTextNode(newsElement.section);
+            let newsDropDownNode = document.createTextNode(newsElement.title);
+
 
             main.appendChild(section);
             section.appendChild(article);
@@ -44,6 +49,7 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             headLine.appendChild(newsNode);
             div.appendChild(dropDownButton);
             dropDownButton.appendChild(dropDownIcon);
+            dropDownNews.appendChild(newsDropDownNode);
         });
     });
 
