@@ -1,0 +1,25 @@
+.Main {
+	background-color: #eceff0;
+	.Section__settings-div-headline {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.FirstHeadline__Large {
+		font-size: 30px;
+		font-weight: bold;
+		color: #87bcbf;
+	}
+	.SecondHeadline__medium {
+		font-size: 20px;
+		font-weight: lighter;
+	}
+	.Section__settings-div-sort {
+		background-color: azure;
+		margin: 2em;
+		border-radius: 10px;
+	}
+	.setting-li {
+		list-style-type: none;
+	}
+}

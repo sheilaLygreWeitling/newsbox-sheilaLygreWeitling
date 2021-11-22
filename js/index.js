@@ -13,6 +13,8 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
         news.forEach(newsElement => {
             const main = document.querySelector(".Main")
 
+
+
             let section = document.createElement("section")
             section.classList.add("Section")
 
