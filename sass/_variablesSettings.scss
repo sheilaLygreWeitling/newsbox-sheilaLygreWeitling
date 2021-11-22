@@ -1,0 +1,16 @@
+@use "sass:math";
+
+$toggle-background-color-on: #87bcbf;
+$toggle-background-color-off: #e0e5e5;
+$toggle-control-color: white;
+$toggle-width: 55px;
+$toggle-height: 30px;
+$toggle-gutter: 5px;
+$toggle-radius: 50%;
+$toggle-control-speed: 0.15s;
+$toggle-control-ease: ease-in;
+
+// These are our computed variables
+// change at your own risk.
+$toggle-radius: math.div($toggle-height, 2);
+$toggle-control-size: $toggle-height - ($toggle-gutter * 2);

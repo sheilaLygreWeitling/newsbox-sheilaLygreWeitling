@@ -1,25 +1,82 @@
+/** sunny side **/
+/** dark side **/
+/** general **/
 .Main {
   background-color: #eceff0;
 }
 .Main .Section__settings-div-headline {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 .Main .FirstHeadline__Large {
   font-size: 30px;
   font-weight: bold;
   color: #87bcbf;
+  margin: 0;
+  padding: 0.5em;
 }
 .Main .SecondHeadline__medium {
   font-size: 20px;
   font-weight: lighter;
+  margin: 0;
+}
+.Main hr {
+  width: 10%;
+  border: 1px solid white;
 }
 .Main .Section__settings-div-sort {
-  background-color: azure;
+  background-color: white;
   margin: 2em;
   border-radius: 10px;
 }
 .Main .setting-li {
   list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #f0f3f4;
+}
+
+.settings-label-select {
+  display: block;
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+  bottom: 11px;
+}
+.settings-label-select input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 10px;
+  width: 0;
+}
+.settings-label-select input:checked ~ .input-span {
+  background-color: #87bcbf;
+}
+.settings-label-select input:checked ~ .input-span:after {
+  left: 30px;
+}
+.settings-label-select .input-span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 55px;
+  border-radius: 15px;
+  background-color: #e0e5e5;
+  transition: background-color 0.15s ease-in;
+}
+.settings-label-select .input-span:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  background: white;
+  transition: left 0.15s ease-in;
 }

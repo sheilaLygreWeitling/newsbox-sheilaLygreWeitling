@@ -1,25 +1,87 @@
+@import "variablesSettings";
+@import "lightNdarkMode";
+
 .Main {
 	background-color: #eceff0;
 	.Section__settings-div-headline {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		text-align: center;
 	}
 	.FirstHeadline__Large {
 		font-size: 30px;
 		font-weight: bold;
 		color: #87bcbf;
+		margin: 0;
+		padding: 0.5em;
 	}
 	.SecondHeadline__medium {
 		font-size: 20px;
 		font-weight: lighter;
+		margin: 0;
+	}
+	hr {
+		width: 10%;
+		border: 1px solid white;
 	}
 	.Section__settings-div-sort {
-		background-color: azure;
+		background-color: white;
 		margin: 2em;
 		border-radius: 10px;
 	}
 	.setting-li {
 		list-style-type: none;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		border-bottom: 1px solid #f0f3f4;
+	}
+}
+
+.settings-label-select {
+	display: block;
+	position: relative;
+	padding-left: $toggle-width;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	user-select: none;
+	bottom: 11px;
+
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 10px;
+		width: 0;
+	}
+
+	input:checked ~ .input-span {
+		background-color: $toggle-background-color-on;
+
+		&:after {
+			left: $toggle-width - $toggle-control-size - $toggle-gutter;
+		}
+	}
+
+	.input-span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: $toggle-height;
+		width: $toggle-width;
+		border-radius: $toggle-radius;
+		background-color: $toggle-background-color-off;
+		transition: background-color $toggle-control-speed $toggle-control-ease;
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: $toggle-gutter;
+			top: $toggle-gutter;
+			width: $toggle-control-size;
+			height: $toggle-control-size;
+			border-radius: $toggle-radius;
+			background: $toggle-control-color;
+			transition: left $toggle-control-speed $toggle-control-ease;
+		}
 	}
 }

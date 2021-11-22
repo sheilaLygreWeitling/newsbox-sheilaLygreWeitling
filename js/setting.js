@@ -11,10 +11,10 @@ let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 sections.forEach(element => {
     axios.get(`https://api.nytimes.com/svc/topstories/v2/${element}.json?api-key=${myAPIKey}`)
         .then((response) => {
-            /*             console.log('hey') */
             const sectionSettings = document.querySelector(".Section__settings-div-sort");
 
             console.log(response.data.section);
+            let paragraphContext = document.createTextNode(response.data.section)
 
             let ul = document.createElement("ul")
             ul.classList.add("setting-ul")
@@ -43,8 +43,8 @@ sections.forEach(element => {
             li.appendChild(paragraph);
             li.appendChild(label);
             li.appendChild(labelSelect);
-            li.appendChild(inputToggle);
-            li.appendChild(inputSpan);
-
+            labelSelect.appendChild(inputToggle);
+            labelSelect.appendChild(inputSpan);
+            paragraph.appendChild(paragraphContext);
         });
 });
