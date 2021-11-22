@@ -8,7 +8,7 @@
             parentElement.classList.add("open");
         }, 800);
         setTimeout(() => {
-            parentElement.toggle();
+            parentElement.remove();
         }, 900);
     }
 }); */
