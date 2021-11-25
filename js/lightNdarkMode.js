@@ -12,12 +12,5 @@ function modeSwitch() {
 
     root.classList.toggle("lightMode");
 
-    /*     let mode;
-        mode = localStorage.getItem('mode');
-        if (mode === 'isLight') {
-            lightMode();
-        } else {
-            isDark;
-        } */
 }
 

@@ -13,8 +13,6 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
         news.forEach(newsElement => {
             const main = document.querySelector(".Main")
 
-
-
             let section = document.createElement("section")
             section.classList.add("Section")
 
@@ -58,6 +56,17 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
             newsParagraph.appendChild(newsDropDownNode);
         });
 
+
+        document.querySelector(".fa-chevron-down").addEventListener("click", () => {
+            function show_hide() {
+                if (document.querySelector(".dropDownNewsParagraph").style.display === "none") {
+                    document.querySelector(".dropDownNewsParagraph").style.display = "block";
+                } else {
+                    document.querySelector(".dropDownNewsParagraph").style.display = "none";
+                }
+            } show_hide();
+        });
+
         let touchCoordinateStart;
         let touchCoordinateMove;
         let touchCoordinateEnd;
@@ -91,31 +100,34 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
                         }
                     }
                 });
-
-                /* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
-                    let userObject = {
-                        id: parentElement.id,
-                        name: parentElement.querySelector(".animate__animated-jokeItem").textContent,
-                    };
-                    recycle = recycle.filter((item) => userObject.id != item.id);
-
-                    if (recycle.length > 0) {
-                        localStorage.setItem("deletedItems", JSON.stringify(recycle));
-                    } else {
-                        localStorage.clear();
-                    }
-
-                    parentElement.classList.add("animate__fadeOutLeft")
-                    setTimeout(() => {
-                        parentElement.classList.add("collapsed");
-                    }, 800);
-                    setTimeout(() => {
-                        parentElement.remove();
-                    }, 900);
-                }; */
             };
         });
     });
+
+
+/* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
+    let userObject = {
+        id: parentElement.id,
+        name: parentElement.querySelector(".animate__animated-jokeItem").textContent,
+    };
+    recycle = recycle.filter((item) => userObject.id != item.id);
+
+    if (recycle.length > 0) {
+        localStorage.setItem("deletedItems", JSON.stringify(recycle));
+    } else {
+        localStorage.clear();
+    }
+
+    parentElement.classList.add("animate__fadeOutLeft")
+    setTimeout(() => {
+        parentElement.classList.add("collapsed");
+    }, 800);
+    setTimeout(() => {
+        parentElement.remove();
+    }, 900);
+}; */
+
+
 
 /*         document.querySelector(".Main").addEventListener("click", (e) => {
             if (e.target.tagName === "I") {

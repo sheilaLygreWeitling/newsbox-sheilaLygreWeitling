@@ -32,8 +32,9 @@ sections.forEach(element => {
             labelSelect.classList.add("settings-label-select")
 
             let inputToggle = document.createElement("input")
-            inputToggle.classList.add("input-toggle")
+            inputToggle.classList.add(`inputToggle-${element}`)
             inputToggle.setAttribute("type", "checkbox")
+            /* inputToggle.getElementsByClassName(`inputToggle-${element}`).checked = true; */
 
             let inputSpan = document.createElement("span")
             inputSpan.classList.add("input-span")
@@ -46,5 +47,13 @@ sections.forEach(element => {
             labelSelect.appendChild(inputToggle);
             labelSelect.appendChild(inputSpan);
             paragraph.appendChild(paragraphContext);
+
         });
 });
+
+
+window.onload = onPageLoad();
+
+function onPageLoad() {
+    document.getElementsByClassName(`inputToggle-${element}`).checked = true;
+} onPageLoad();

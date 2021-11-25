@@ -1,14 +1,17 @@
+let newsURL = window.location.search;
+let params = new URLSearchParams(newsURL);
+let newsCategory = params.get("/home.json");
+
 let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
-let url = "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=" + myAPIKey
+let url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey
 
-axios.get("https://api.nytimes.com/svc/topstories/v2/science.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")
+axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")
     .then((response) => {
-        const news = [];
+        const news = response.data.results;
 
+        console.log(response);
         news.forEach(newsElement => {
             const main = document.querySelector(".Main")
-
-            let frontPageNews = document.createTextNode(newsElement.response);
 
             let section = document.createElement("section")
             section.classList.add("Section")
@@ -19,30 +22,38 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/science.json?api-key=RJ9oWj
             let divSectionArticleDiv = document.createElement("div")
             divSectionArticleDiv.classList.add("Section__article-div")
 
-            let div = document.createElement("div")
-            div.classList.add("Div")
+            let divSectionArticleDeleteDiv = document.createElement("div");
+            divSectionArticleDeleteDiv.classList.add("Section__article-div-delete");
 
             let headLine = document.createElement("h1")
-            headLine.classList.add("headLine-l")
-
-            let dropDownDiv = document.createElement("div")
-            dropDownDiv.classList.add("Div__dropDown")
+            headLine.classList.add("headLineLarge")
 
             let dropDownButton = document.createElement("button")
             dropDownButton.classList.add("Div__dropDown-button")
 
+            let dropDownNews = document.createElement("div")
+            dropDownNews.classList.add("dropDownNewsSetion")
+
+            let newsParagraph = document.createElement("p")
+            newsParagraph.classList.add("dropDownNewsParagraph")
+
             let dropDownIcon = document.createElement("i")
             dropDownIcon.classList.add("fas", "fa-chevron-down")
+
+            let newsNode = document.createTextNode(newsElement.section);
+            let newsDropDownNode = document.createTextNode(newsElement.title)
+
 
             main.appendChild(section);
             section.appendChild(article);
             article.appendChild(divSectionArticleDiv);
-            article.appendChild(div);
-            div.appendChild(headLine);
-            headLine.appendChild(frontPageNews);
-            article.appendChild(dropDownDiv);
-            dropDownDiv.appendChild(dropDownButton);
+            article.appendChild(divSectionArticleDeleteDiv);
+            divSectionArticleDiv.appendChild(headLine);
+            divSectionArticleDiv.appendChild(newsParagraph);
+            headLine.appendChild(newsNode);
+            divSectionArticleDiv.appendChild(dropDownButton);
             dropDownButton.appendChild(dropDownIcon);
+            newsParagraph.appendChild(newsDropDownNode);
         });
     });
 

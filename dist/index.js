@@ -41,6 +41,17 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     dropDownButton.appendChild(dropDownIcon);
     newsParagraph.appendChild(newsDropDownNode);
   });
+  document.querySelector(".fa-chevron-down").addEventListener("click", function () {
+    function show_hide() {
+      if (document.querySelector(".dropDownNewsParagraph").style.display === "none") {
+        document.querySelector(".dropDownNewsParagraph").style.display = "block";
+      } else {
+        document.querySelector(".dropDownNewsParagraph").style.display = "none";
+      }
+    }
+
+    show_hide();
+  });
   var touchCoordinateStart;
   var touchCoordinateMove;
   var touchCoordinateEnd;
@@ -75,30 +86,33 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
           }
         }
       });
-      /* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
-          let userObject = {
-              id: parentElement.id,
-              name: parentElement.querySelector(".animate__animated-jokeItem").textContent,
-          };
-          recycle = recycle.filter((item) => userObject.id != item.id);
-           if (recycle.length > 0) {
-              localStorage.setItem("deletedItems", JSON.stringify(recycle));
-          } else {
-              localStorage.clear();
-          }
-           parentElement.classList.add("animate__fadeOutLeft")
-          setTimeout(() => {
-              parentElement.classList.add("collapsed");
-          }, 800);
-          setTimeout(() => {
-              parentElement.remove();
-          }, 900);
-      }; */
     }
 
     ;
   });
 });
+/* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
+    let userObject = {
+        id: parentElement.id,
+        name: parentElement.querySelector(".animate__animated-jokeItem").textContent,
+    };
+    recycle = recycle.filter((item) => userObject.id != item.id);
+
+    if (recycle.length > 0) {
+        localStorage.setItem("deletedItems", JSON.stringify(recycle));
+    } else {
+        localStorage.clear();
+    }
+
+    parentElement.classList.add("animate__fadeOutLeft")
+    setTimeout(() => {
+        parentElement.classList.add("collapsed");
+    }, 800);
+    setTimeout(() => {
+        parentElement.remove();
+    }, 900);
+}; */
+
 /*         document.querySelector(".Main").addEventListener("click", (e) => {
             if (e.target.tagName === "I") {
                 touchElement = e.target

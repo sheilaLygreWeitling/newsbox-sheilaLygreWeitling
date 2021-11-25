@@ -18,8 +18,10 @@ sections.forEach(function (element) {
     var labelSelect = document.createElement("label");
     labelSelect.classList.add("settings-label-select");
     var inputToggle = document.createElement("input");
-    inputToggle.classList.add("input-toggle");
+    inputToggle.classList.add("inputToggle-".concat(element));
     inputToggle.setAttribute("type", "checkbox");
+    /* inputToggle.getElementsByClassName(`inputToggle-${element}`).checked = true; */
+
     var inputSpan = document.createElement("span");
     inputSpan.classList.add("input-span");
     sectionSettings.appendChild(ul);
@@ -32,3 +34,10 @@ sections.forEach(function (element) {
     paragraph.appendChild(paragraphContext);
   });
 });
+window.onload = onPageLoad();
+
+function onPageLoad() {
+  document.getElementsByClassName("inputToggle-".concat(element)).checked = true;
+}
+
+onPageLoad();

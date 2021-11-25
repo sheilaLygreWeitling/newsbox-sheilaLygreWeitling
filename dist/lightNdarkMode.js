@@ -9,11 +9,4 @@ function modeSwitch() {
   var root = document.body;
   isLight ? toggle.innerText = "🌞" : toggle.innerText = "🌚";
   root.classList.toggle("lightMode");
-  /*     let mode;
-      mode = localStorage.getItem('mode');
-      if (mode === 'isLight') {
-          lightMode();
-      } else {
-          isDark;
-      } */
 }
