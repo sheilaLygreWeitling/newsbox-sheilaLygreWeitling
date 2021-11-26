@@ -1,5 +1,6 @@
-section {
+.Section__article {
   display: grid;
+  grid-template: 75px/1fr;
 }
 
 .Section__article-div {
@@ -10,6 +11,8 @@ section {
   border-top: 1px solid #e0e1e2;
   padding: 0.5em;
   z-index: 10;
+  grid-area: 1/1/2/2;
+  background-color: white;
 }
 .Section__article-div .Div__dropDown-button {
   border: none;
@@ -26,23 +29,29 @@ section {
 }
 
 .Section__article-div-delete {
-  background-color: red;
-  height: 66px;
+  grid-area: 1/1/2/2;
+  background-color: #d95454;
   z-index: 0;
 }
-.Section__article-div-delete .Section__article-div-delete::before {
+
+.Section__article-div-delete::before {
   font-family: "Font Awesome 5 Free";
   content: "\f1f8";
+  color: #e0e1e2;
 }
 
-.dropDownNewsParagraph {
-  display: none;
-}
-
-.collapsed {
+.newsSectionWrapper {
+  transition: height 1s ease;
+  border: solid 1px red;
+  overflow-y: hidden;
   height: 0;
 }
 
+.dropDownNewsSection {
+  margin-bottom: 5px;
+}
+
 .open {
-  height: 20vh;
+  height: auto;
+  transform: height;
 }

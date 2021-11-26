@@ -2,13 +2,13 @@
 
 var newsURL = window.location.search;
 var params = new URLSearchParams(newsURL);
-var newsCategory = params.get("/home.json");
+var newsCategory = ["world"
+/*  "health", "sports", "business", "travel"*/
+];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
-axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F").then(function (response) {
-  var news = response.data.results;
-  console.log(response);
-  news.forEach(function (newsElement) {
+newsCategory.forEach(function (element) {
+  axios.get("https://api.nytimes.com/svc/topstories/v2/".concat(element, ".json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")).then(function (response) {
     var main = document.querySelector(".Main");
     var section = document.createElement("section");
     section.classList.add("Section");
@@ -16,42 +16,57 @@ axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=RJ9oWjSES
     article.classList.add("Section__article");
     var divSectionArticleDiv = document.createElement("div");
     divSectionArticleDiv.classList.add("Section__article-div");
-    var divSectionArticleDeleteDiv = document.createElement("div");
+    var divNewsWrapper = document.createElement("div");
+    divNewsWrapper.classList.add("newsSectionWrapper", "collapsed");
+    var divSectionArticleDeleteDiv = document.createElement("article");
     divSectionArticleDeleteDiv.classList.add("Section__article-div-delete");
     var headLine = document.createElement("h1");
     headLine.classList.add("headLineLarge");
     var dropDownButton = document.createElement("button");
     dropDownButton.classList.add("Div__dropDown-button");
-    var dropDownNews = document.createElement("div");
-    dropDownNews.classList.add("dropDownNewsSetion");
-    var newsParagraph = document.createElement("p");
-    newsParagraph.classList.add("dropDownNewsParagraph");
     var dropDownIcon = document.createElement("i");
     dropDownIcon.classList.add("fas", "fa-chevron-down");
-    var newsNode = document.createTextNode(newsElement.section);
-    var newsDropDownNode = document.createTextNode(newsElement.title);
+    var newsNode = document.createTextNode("".concat(element));
     main.appendChild(section);
     section.appendChild(article);
     article.appendChild(divSectionArticleDiv);
     article.appendChild(divSectionArticleDeleteDiv);
+    article.appendChild(divNewsWrapper);
     divSectionArticleDiv.appendChild(headLine);
-    divSectionArticleDiv.appendChild(newsParagraph);
     headLine.appendChild(newsNode);
     divSectionArticleDiv.appendChild(dropDownButton);
     dropDownButton.appendChild(dropDownIcon);
-    newsParagraph.appendChild(newsDropDownNode);
-  });
-  document.querySelector(".fa-chevron-down").addEventListener("click", function () {
-    function show_hide() {
-      if (document.querySelector(".dropDownNewsParagraph").style.display === "none") {
-        document.querySelector(".dropDownNewsParagraph").style.display = "block";
-      } else {
-        document.querySelector(".dropDownNewsParagraph").style.display = "none";
-      }
-    }
+    response.data.results.forEach(function (news) {
+      var dropDownNews = document.createElement("div");
+      dropDownNews.classList.add("dropDownNewsSection");
+      var newsParagraph = document.createElement("p");
+      newsParagraph.classList.add("dropDownNewsParagraph");
+      dropDownNews.appendChild(newsParagraph);
+      article.appendChild(dropDownNews);
+      divNewsWrapper.appendChild(dropDownNews);
+      var newsDropDownNode = document.createTextNode(news.title);
+      newsParagraph.appendChild(newsDropDownNode);
+    });
+    article.addEventListener("click", function (e) {
+      console.log('test');
 
-    show_hide();
+      if (divNewsWrapper.classList.contains("open")) {
+        divNewsWrapper.classList.remove("open");
+      } else {
+        divNewsWrapper.classList.add("open");
+      }
+    });
   });
+  /*         document.querySelector(".fas").addEventListener("click", () => {
+              function show_hide() {
+                  if (document.querySelector(".dropDownNews").style.display === "none") {
+                      document.querySelector(".dropDownNews").style.display = "block";
+                  } else {
+                      document.querySelector(".dropDownNews").style.display = "none";
+                  }
+              } show_hide();
+          }); */
+
   var touchCoordinateStart;
   var touchCoordinateMove;
   var touchCoordinateEnd;
