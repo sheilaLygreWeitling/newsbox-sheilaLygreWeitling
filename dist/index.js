@@ -3,7 +3,7 @@
 var newsURL = window.location.search;
 var params = new URLSearchParams(newsURL);
 var newsCategory = ["world"
-/*  "health", "sports", "business", "travel"*/
+/* , "health", "sports", "business", "travel" */
 ];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
@@ -18,8 +18,6 @@ newsCategory.forEach(function (element) {
     divSectionArticleDiv.classList.add("Section__article-div");
     var divNewsWrapper = document.createElement("div");
     divNewsWrapper.classList.add("newsSectionWrapper", "collapsed");
-    var divSectionArticleDeleteDiv = document.createElement("article");
-    divSectionArticleDeleteDiv.classList.add("Section__article-div-delete");
     var headLine = document.createElement("h1");
     headLine.classList.add("headLineLarge");
     var dropDownButton = document.createElement("button");
@@ -30,12 +28,16 @@ newsCategory.forEach(function (element) {
     main.appendChild(section);
     section.appendChild(article);
     article.appendChild(divSectionArticleDiv);
-    article.appendChild(divSectionArticleDeleteDiv);
     article.appendChild(divNewsWrapper);
     divSectionArticleDiv.appendChild(headLine);
     headLine.appendChild(newsNode);
     divSectionArticleDiv.appendChild(dropDownButton);
     dropDownButton.appendChild(dropDownIcon);
+    /* let archiveNews = document.createElement("div")
+    archiveNews.classList.add("archiveNewsInArchive")
+     archiveNews.appendChild(divSectionArticleDeleteDiv)
+    archiveNews.appendChild(newsParagraph) */
+
     response.data.results.forEach(function (news) {
       var dropDownNews = document.createElement("div");
       dropDownNews.classList.add("dropDownNewsSection");
@@ -46,66 +48,61 @@ newsCategory.forEach(function (element) {
       divNewsWrapper.appendChild(dropDownNews);
       var newsDropDownNode = document.createTextNode(news.title);
       newsParagraph.appendChild(newsDropDownNode);
+      var divSectionArticleDeleteDiv = document.createElement("article");
+      divSectionArticleDeleteDiv.classList.add("Section__article-div-delete");
     });
-    article.addEventListener("click", function (e) {
-      console.log('test');
-
+    dropDownButton.addEventListener("click", function (e) {
       if (divNewsWrapper.classList.contains("open")) {
         divNewsWrapper.classList.remove("open");
       } else {
         divNewsWrapper.classList.add("open");
       }
     });
-  });
-  /*         document.querySelector(".fas").addEventListener("click", () => {
-              function show_hide() {
-                  if (document.querySelector(".dropDownNews").style.display === "none") {
-                      document.querySelector(".dropDownNews").style.display = "block";
-                  } else {
-                      document.querySelector(".dropDownNews").style.display = "none";
-                  }
-              } show_hide();
-          }); */
+    var touchCoordinateStart;
+    var touchCoordinateMove;
+    var touchCoordinateEnd;
+    var touchElement;
+    var deleteButtonWidth = window.screen.width * 40 / 100;
+    divNewsWrapper.addEventListener("touchstart", function (e) {
+      if (e.target.tagName === "DIV") {
+        touchElement = e.target;
+        touchCoordinateStart = e.touches[0].clientX;
+        touchElement.addEventListener("touchmove", function (e) {
+          if (touchElement.tagName === "DIV") {
+            touchCoordinateMove = Math.floor(e.touches[0].clientX);
 
-  var touchCoordinateStart;
-  var touchCoordinateMove;
-  var touchCoordinateEnd;
-  var touchElement;
-  var parentElement;
-  var deleteButtonWidth = window.screen.width * 40 / 100;
-  /* let recycle = JSON.parse(localStorage.getItem('deletedItems')); */
-
-  document.querySelector("main").addEventListener("touchstart", function (e) {
-    if (e.target.tagName === "DIV") {
-      touchElement = e.target;
-      /*                 parentElement = e.target.closest("article"); */
-
-      touchCoordinateStart = e.touches[0].clientX;
-      touchElement.addEventListener("touchmove", function (e) {
-        if (touchElement.tagName === "DIV") {
-          touchCoordinateMove = Math.floor(e.touches[0].clientX);
-
-          if (touchCoordinateMove < touchCoordinateStart && touchCoordinateMove > touchCoordinateStart - deleteButtonWidth) {
-            touchElement.style.transform = "translateX(".concat(touchCoordinateMove - touchCoordinateStart, "px)");
+            if (touchCoordinateMove < touchCoordinateStart && touchCoordinateMove > touchCoordinateStart - deleteButtonWidth) {
+              touchElement.style.transform = "translateX(".concat(touchCoordinateMove - touchCoordinateStart, "px)");
+            }
           }
-        }
-      });
-      touchElement.addEventListener("touchend", function (e) {
-        if (touchElement.tagName === "DIV") {
-          touchCoordinateEnd = Math.floor(e.changedTouches[0].clientX);
+        });
+        touchElement.addEventListener("touchend", function (e) {
+          if (touchElement.tagName === "DIV") {
+            touchCoordinateEnd = Math.floor(e.changedTouches[0].clientX);
 
-          if (touchCoordinateEnd < touchCoordinateStart - deleteButtonWidth / 2) {
-            touchElement.style.transform = "translateX(-".concat(deleteButtonWidth, "px)");
-          } else {
-            touchElement.style.transform = "translateX(0)";
+            if (touchCoordinateEnd < touchCoordinateStart - deleteButtonWidth / 2) {
+              touchElement.style.transform = "translateX(-".concat(deleteButtonWidth, "px)");
+            } else {
+              touchElement.style.transform = "translateX(0)";
+            }
           }
-        }
-      });
-    }
+        });
+      }
 
-    ;
+      ;
+    });
   });
 });
+/*         document.querySelector(".fas").addEventListener("click", () => {
+            function show_hide() {
+                if (document.querySelector(".dropDownNews").style.display === "none") {
+                    document.querySelector(".dropDownNews").style.display = "block";
+                } else {
+                    document.querySelector(".dropDownNews").style.display = "none";
+                }
+            } show_hide();
+        }); */
+
 /* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
     let userObject = {
         id: parentElement.id,

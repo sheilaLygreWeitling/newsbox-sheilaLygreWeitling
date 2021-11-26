@@ -28,6 +28,22 @@
 	}
 }
 
+.dropDownNewsSection {
+	padding: 5px;
+	border-bottom: 1px solid #e0e1e2;
+}
+
+.newsSectionWrapper {
+	transition: height 1s ease;
+	overflow-y: hidden;
+	height: 0;
+}
+
+.open {
+	height: auto;
+	transform: height;
+}
+
 .Section__article-div-delete {
 	grid-area: 1/1/2/2;
 	background-color: #d95454;
@@ -38,20 +54,4 @@
 	font-family: "Font Awesome 5 Free";
 	content: "\f1f8";
 	color: #e0e1e2;
-}
-
-.newsSectionWrapper {
-	transition: height 1s ease;
-	border: solid 1px red;
-	overflow-y: hidden;
-	height: 0;
-}
-
-.dropDownNewsSection {
-	margin-bottom: 5px;
-}
-
-.open {
-	height: auto;
-	transform: height;
 }
