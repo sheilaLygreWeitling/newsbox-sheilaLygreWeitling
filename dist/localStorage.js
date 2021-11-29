@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
       /* localStorage.setItem('dark-mode', false) */
 
       localStorage.setItem('archive', JSON.stringify(archiveArray));
+      localStorage.setItem("checked", true);
       localStorage.setItem('world', true);
       localStorage.setItem('health', true);
       localStorage.setItem('sports', true);

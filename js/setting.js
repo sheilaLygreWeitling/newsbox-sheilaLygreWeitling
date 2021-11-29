@@ -1,9 +1,9 @@
 const sections = [
     "world",
-    "health",
-    "sports",
-    "business",
-    "travel"
+    /*     "health",
+        "sports",
+        "business",
+        "travel" */
 ]
 
 let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
@@ -32,12 +32,11 @@ sections.forEach(element => {
             labelSelect.classList.add("settings-label-select")
 
             let inputToggle = document.createElement("input")
-            inputToggle.classList.add(`inputToggle-${element}`)
+            inputToggle.classList.add("inputToggle")
             inputToggle.setAttribute("type", "checkbox")
-            /* inputToggle.getElementsByClassName(`inputToggle-${element}`).checked = true; */
 
             let inputSpan = document.createElement("span")
-            inputSpan.classList.add("input-span")
+            inputSpan.classList.add("input-span", "on", "off")
 
             sectionSettings.appendChild(ul);
             ul.appendChild(li);
@@ -47,13 +46,17 @@ sections.forEach(element => {
             labelSelect.appendChild(inputToggle);
             labelSelect.appendChild(inputSpan);
             paragraph.appendChild(paragraphContext);
-
         });
+
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains("inputToggle")) {
+            if (!e.target.hasAttribute('checked')) {
+                e.target.setAttribute('checked', 'checked')
+                localStorage.setItem("checked", true)
+            } else {
+                e.target.removeAttribute('checked')
+                localStorage.setItem("checked", false);
+            }
+        }
+    });
 });
-
-
-window.onload = onPageLoad();
-
-function onPageLoad() {
-    document.getElementsByClassName(`inputToggle-${element}`).checked = true;
-} onPageLoad();

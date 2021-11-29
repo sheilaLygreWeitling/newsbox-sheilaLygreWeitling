@@ -1,6 +1,11 @@
 "use strict";
 
-var sections = ["world", "health", "sports", "business", "travel"];
+var sections = ["world"
+/*     "health",
+    "sports",
+    "business",
+    "travel" */
+];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 sections.forEach(function (element) {
   axios.get("https://api.nytimes.com/svc/topstories/v2/".concat(element, ".json?api-key=").concat(myAPIKey)).then(function (response) {
@@ -18,12 +23,10 @@ sections.forEach(function (element) {
     var labelSelect = document.createElement("label");
     labelSelect.classList.add("settings-label-select");
     var inputToggle = document.createElement("input");
-    inputToggle.classList.add("inputToggle-".concat(element));
+    inputToggle.classList.add("inputToggle");
     inputToggle.setAttribute("type", "checkbox");
-    /* inputToggle.getElementsByClassName(`inputToggle-${element}`).checked = true; */
-
     var inputSpan = document.createElement("span");
-    inputSpan.classList.add("input-span");
+    inputSpan.classList.add("input-span", "on", "off");
     sectionSettings.appendChild(ul);
     ul.appendChild(li);
     li.appendChild(paragraph);
@@ -33,11 +36,15 @@ sections.forEach(function (element) {
     labelSelect.appendChild(inputSpan);
     paragraph.appendChild(paragraphContext);
   });
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains("inputToggle")) {
+      if (!e.target.hasAttribute('checked')) {
+        e.target.setAttribute('checked', 'checked');
+        localStorage.setItem("checked", true);
+      } else {
+        e.target.removeAttribute('checked');
+        localStorage.setItem("checked", false);
+      }
+    }
+  });
 });
-window.onload = onPageLoad();
-
-function onPageLoad() {
-  document.getElementsByClassName("inputToggle-".concat(element)).checked = true;
-}
-
-onPageLoad();

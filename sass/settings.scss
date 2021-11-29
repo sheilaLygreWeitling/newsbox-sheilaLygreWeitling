@@ -46,7 +46,7 @@
 	user-select: none;
 	bottom: 11px;
 
-	input {
+	.inputToggle {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
@@ -54,7 +54,7 @@
 		width: 0;
 	}
 
-	input:checked ~ .input-span {
+	.inputToggle:checked ~ .input-span {
 		background-color: $toggle-background-color-on;
 
 		&:after {

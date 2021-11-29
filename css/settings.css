@@ -46,17 +46,17 @@
   user-select: none;
   bottom: 11px;
 }
-.settings-label-select input {
+.settings-label-select .inputToggle {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 10px;
   width: 0;
 }
-.settings-label-select input:checked ~ .input-span {
+.settings-label-select .inputToggle:checked ~ .input-span {
   background-color: #87bcbf;
 }
-.settings-label-select input:checked ~ .input-span:after {
+.settings-label-select .inputToggle:checked ~ .input-span:after {
   left: 30px;
 }
 .settings-label-select .input-span {
