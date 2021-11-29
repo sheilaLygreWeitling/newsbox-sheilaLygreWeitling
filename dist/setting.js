@@ -23,10 +23,10 @@ sections.forEach(function (element) {
     var labelSelect = document.createElement("label");
     labelSelect.classList.add("settings-label-select");
     var inputToggle = document.createElement("input");
-    inputToggle.classList.add("inputToggle");
+    inputToggle.classList.add("inputToggle", "on");
     inputToggle.setAttribute("type", "checkbox");
     var inputSpan = document.createElement("span");
-    inputSpan.classList.add("input-span", "on", "off");
+    inputSpan.classList.add("input-span", "off");
     sectionSettings.appendChild(ul);
     ul.appendChild(li);
     li.appendChild(paragraph);
@@ -36,14 +36,22 @@ sections.forEach(function (element) {
     labelSelect.appendChild(inputSpan);
     paragraph.appendChild(paragraphContext);
   });
-  document.addEventListener('click', function (e) {
+  document.addEventListener("click", function (e) {
     if (e.target.classList.contains("inputToggle")) {
-      if (!e.target.hasAttribute('checked')) {
-        e.target.setAttribute('checked', 'checked');
+      if (!e.target.hasAttribute("checked")) {
+        e.target.setAttribute("checked", "checked");
         localStorage.setItem("checked", true);
+        e.target.classList.add("on");
+        e.target.classList.remove("off");
+        localStorage.setItem("on", true);
+        localStorage.setItem("off", false);
       } else {
-        e.target.removeAttribute('checked');
+        e.target.removeAttribute("checked");
         localStorage.setItem("checked", false);
+        e.target.classList.add("off");
+        e.target.classList.remove("on");
+        localStorage.setItem("off", true);
+        localStorage.setItem("on", false);
       }
     }
   });

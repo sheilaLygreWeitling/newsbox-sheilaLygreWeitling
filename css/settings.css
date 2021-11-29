@@ -47,19 +47,22 @@
   bottom: 11px;
 }
 .settings-label-select .inputToggle {
+  display: none;
+}
+.settings-label-select .on {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 10px;
   width: 0;
 }
-.settings-label-select .inputToggle:checked ~ .input-span {
+.settings-label-select .on:checked ~ .off {
   background-color: #87bcbf;
 }
-.settings-label-select .inputToggle:checked ~ .input-span:after {
+.settings-label-select .on:checked ~ .off:after {
   left: 30px;
 }
-.settings-label-select .input-span {
+.settings-label-select .off {
   position: absolute;
   top: 0;
   left: 0;
@@ -69,7 +72,7 @@
   background-color: #e0e5e5;
   transition: background-color 0.15s ease-in;
 }
-.settings-label-select .input-span:after {
+.settings-label-select .off:after {
   content: "";
   position: absolute;
   left: 5px;

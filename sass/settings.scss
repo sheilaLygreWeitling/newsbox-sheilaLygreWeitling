@@ -47,6 +47,10 @@
 	bottom: 11px;
 
 	.inputToggle {
+		display: none;
+	}
+
+	.on {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
@@ -54,7 +58,7 @@
 		width: 0;
 	}
 
-	.inputToggle:checked ~ .input-span {
+	.on:checked ~ .off {
 		background-color: $toggle-background-color-on;
 
 		&:after {
@@ -62,7 +66,7 @@
 		}
 	}
 
-	.input-span {
+	.off {
 		position: absolute;
 		top: 0;
 		left: 0;

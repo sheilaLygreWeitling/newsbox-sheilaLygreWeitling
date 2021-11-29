@@ -32,11 +32,11 @@ sections.forEach(element => {
             labelSelect.classList.add("settings-label-select")
 
             let inputToggle = document.createElement("input")
-            inputToggle.classList.add("inputToggle")
+            inputToggle.classList.add("inputToggle", "on")
             inputToggle.setAttribute("type", "checkbox")
 
             let inputSpan = document.createElement("span")
-            inputSpan.classList.add("input-span", "on", "off")
+            inputSpan.classList.add("input-span", "off")
 
             sectionSettings.appendChild(ul);
             ul.appendChild(li);
@@ -48,14 +48,22 @@ sections.forEach(element => {
             paragraph.appendChild(paragraphContext);
         });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
         if (e.target.classList.contains("inputToggle")) {
-            if (!e.target.hasAttribute('checked')) {
-                e.target.setAttribute('checked', 'checked')
+            if (!e.target.hasAttribute("checked")) {
+                e.target.setAttribute("checked", "checked")
                 localStorage.setItem("checked", true)
+                e.target.classList.add("on");
+                e.target.classList.remove("off");
+                localStorage.setItem("on", true)
+                localStorage.setItem("off", false)
             } else {
-                e.target.removeAttribute('checked')
+                e.target.removeAttribute("checked")
                 localStorage.setItem("checked", false);
+                e.target.classList.add("off");
+                e.target.classList.remove("on");
+                localStorage.setItem("off", true)
+                localStorage.setItem("on", false)
             }
         }
     });
