@@ -36,7 +36,27 @@
 	}
 }
 
-.settings-label-select {
+.toggleButton {
+	width: 50px;
+	border: none;
+	border-radius: 15px;
+	display: flex;
+	height: 25px;
+	align-items: center;
+	justify-content: left;
+	i {
+		margin: 2px;
+		font-size: 20px;
+		color: #fff;
+	}
+}
+
+.on {
+	justify-content: right;
+	background-color: #87bcbf;
+}
+
+/* .settings-label-select {
 	display: block;
 	position: relative;
 	padding-left: $toggle-width;
@@ -89,3 +109,4 @@
 		}
 	}
 }
+ */

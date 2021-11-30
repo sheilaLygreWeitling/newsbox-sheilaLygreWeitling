@@ -18,41 +18,36 @@ sections.forEach(function (element) {
     li.classList.add("setting-li");
     var paragraph = document.createElement("p");
     paragraph.classList.add("setting-paragraph");
-    var label = document.createElement("label");
-    label.classList.add("settings-label");
-    var labelSelect = document.createElement("label");
-    labelSelect.classList.add("settings-label-select");
-    var inputToggle = document.createElement("input");
-    inputToggle.classList.add("inputToggle", "on");
-    inputToggle.setAttribute("type", "checkbox");
-    var inputSpan = document.createElement("span");
-    inputSpan.classList.add("input-span", "off");
+    var togglebutton = document.createElement('button');
+    togglebutton.classList.add("toggleButton");
+    togglebutton.id = "toggleButton-".concat(element);
+    var togglebuttonIcon = document.createElement('i');
+    togglebuttonIcon.classList.add("toggleButtonIcon", "fa", "fa-circle");
     sectionSettings.appendChild(ul);
     ul.appendChild(li);
     li.appendChild(paragraph);
-    li.appendChild(label);
-    li.appendChild(labelSelect);
-    labelSelect.appendChild(inputToggle);
-    labelSelect.appendChild(inputSpan);
+    li.appendChild(togglebutton);
+    togglebutton.appendChild(togglebuttonIcon);
     paragraph.appendChild(paragraphContext);
-  });
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("inputToggle")) {
-      if (!e.target.hasAttribute("checked")) {
-        e.target.setAttribute("checked", "checked");
-        localStorage.setItem("checked", true);
-        e.target.classList.add("on");
-        e.target.classList.remove("off");
-        localStorage.setItem("on", true);
-        localStorage.setItem("off", false);
+
+    function categorySwitchFunction(e) {
+      if (localStorage.getItem(e.id.replace('toggleButton-', '')) == 'true') {
+        e.classList.add('on');
       } else {
-        e.target.removeAttribute("checked");
-        localStorage.setItem("checked", false);
-        e.target.classList.add("off");
-        e.target.classList.remove("on");
-        localStorage.setItem("off", true);
-        localStorage.setItem("on", false);
+        e.classList.remove('on');
       }
+
+      e.addEventListener("click", function () {
+        if (e.classList.contains("on")) {
+          localStorage.setItem(e.id.replace("toggleButton-", ""), "false");
+          e.classList.remove("on");
+        } else {
+          localStorage.setItem(e.id.replace("toggleButton-", ""), "true");
+          e.classList.add("on");
+        }
+      });
     }
+
+    categorySwitchFunction(togglebutton);
   });
 });

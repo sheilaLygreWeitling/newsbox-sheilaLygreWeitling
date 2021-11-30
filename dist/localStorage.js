@@ -10,8 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       localStorage.setItem('archive', JSON.stringify(archiveArray));
       localStorage.setItem("checked", true);
-      localStorage.setItem("on", true);
-      localStorage.setItem("off", true);
+      /*             localStorage.setItem("on", true)
+                  localStorage.setItem("off", true)
+       */
+
       localStorage.setItem('world', true);
       localStorage.setItem('health', true);
       localStorage.setItem('sports', true);

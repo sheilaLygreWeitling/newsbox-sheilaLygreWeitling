@@ -75,3 +75,7 @@ body {
 .lightMode .Section__settings-div-sort {
   background-color: #111626;
 }
+.lightMode .Section__article-div {
+  background-color: #171923;
+  color: #c5cddb;
+}

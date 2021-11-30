@@ -30,13 +30,16 @@
 
 .dropDownNewsSection {
 	padding: 5px;
-	border-bottom: 1px solid #e0e1e2;
 }
 
 .newsSectionWrapper {
 	transition: height 1s ease;
 	overflow-y: hidden;
 	height: 0;
+}
+
+.dropDownNewsTitle {
+	font-weight: bolder;
 }
 
 .open {

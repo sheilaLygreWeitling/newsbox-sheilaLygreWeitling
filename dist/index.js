@@ -3,11 +3,20 @@
 var newsURL = window.location.search;
 var params = new URLSearchParams(newsURL);
 var newsCategory = ["world"
-/* , "health", "sports", "business", "travel" */
+/* "health",
+"sports",
+"business",
+"travel" */
 ];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
 newsCategory.forEach(function (element) {
+  if (localStorage.getItem(element) == "true") {
+    createNews(element);
+  }
+});
+
+function createNews(element) {
   axios.get("https://api.nytimes.com/svc/topstories/v2/".concat(element, ".json?api-key=RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F")).then(function (response) {
     var main = document.querySelector(".Main");
     var section = document.createElement("section");
@@ -33,24 +42,28 @@ newsCategory.forEach(function (element) {
     headLine.appendChild(newsNode);
     divSectionArticleDiv.appendChild(dropDownButton);
     dropDownButton.appendChild(dropDownIcon);
-    /* let archiveNews = document.createElement("div")
-    archiveNews.classList.add("archiveNewsInArchive")
-     archiveNews.appendChild(divSectionArticleDeleteDiv)
-    archiveNews.appendChild(newsParagraph) */
 
-    response.data.results.forEach(function (news) {
+    for (var index = 0; index < response.data.results.length; index++) {
       var dropDownNews = document.createElement("div");
       dropDownNews.classList.add("dropDownNewsSection");
-      var newsParagraph = document.createElement("p");
-      newsParagraph.classList.add("dropDownNewsParagraph");
-      dropDownNews.appendChild(newsParagraph);
+      var newstitle = document.createElement("h2");
+      newstitle.classList.add("dropDownNewsTitle");
+      var newsAbstract = document.createElement("p");
+      newsAbstract.classList.add("newsAbstract");
+      var newsimage = document.createElement("img");
+      newsimage.classList.add("newsImage");
       article.appendChild(dropDownNews);
+      dropDownNews.appendChild(newstitle);
       divNewsWrapper.appendChild(dropDownNews);
-      var newsDropDownNode = document.createTextNode(news.title);
-      newsParagraph.appendChild(newsDropDownNode);
+      dropDownNews.appendChild(newsAbstract);
+      dropDownNews.appendChild(newsimage);
+      newstitle.textContent = response.data.results[index].title;
+      newsAbstract.textContent = response.data.results[index]["abstract"];
+      newsimage.src = response.data.results[index].multimedia[0].url;
       var divSectionArticleDeleteDiv = document.createElement("article");
       divSectionArticleDeleteDiv.classList.add("Section__article-div-delete");
-    });
+    }
+
     dropDownButton.addEventListener("click", function (e) {
       if (divNewsWrapper.classList.contains("open")) {
         divNewsWrapper.classList.remove("open");
@@ -92,7 +105,7 @@ newsCategory.forEach(function (element) {
       ;
     });
   });
-});
+}
 /*         document.querySelector(".fas").addEventListener("click", () => {
             function show_hide() {
                 if (document.querySelector(".dropDownNews").style.display === "none") {
