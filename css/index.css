@@ -47,13 +47,11 @@
   transform: height;
 }
 
-.Section__article-div-delete {
-  grid-area: 1/1/2/2;
+.Section__article-delete {
   background-color: #d95454;
-  z-index: 0;
 }
 
-.Section__article-div-delete::before {
+.Section__article-delete::before {
   font-family: "Font Awesome 5 Free";
   content: "\f1f8";
   color: #e0e1e2;

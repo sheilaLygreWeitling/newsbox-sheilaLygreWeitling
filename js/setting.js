@@ -30,7 +30,7 @@ sections.forEach(element => {
             togglebutton.id = `toggleButton-${element}`
 
             const togglebuttonIcon = document.createElement('i')
-            togglebuttonIcon.classList.add("toggleButtonIcon", "fa", "fa-circle");
+            togglebuttonIcon.classList.add("toggleButtonIcon", "fas", "fa-circle");
 
             sectionSettings.appendChild(ul);
             ul.appendChild(li);

@@ -22,7 +22,7 @@ sections.forEach(function (element) {
     togglebutton.classList.add("toggleButton");
     togglebutton.id = "toggleButton-".concat(element);
     var togglebuttonIcon = document.createElement('i');
-    togglebuttonIcon.classList.add("toggleButtonIcon", "fa", "fa-circle");
+    togglebuttonIcon.classList.add("toggleButtonIcon", "fas", "fa-circle");
     sectionSettings.appendChild(ul);
     ul.appendChild(li);
     li.appendChild(paragraph);

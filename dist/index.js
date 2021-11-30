@@ -52,16 +52,17 @@ function createNews(element) {
       newsAbstract.classList.add("newsAbstract");
       var newsimage = document.createElement("img");
       newsimage.classList.add("newsImage");
+      var divSectionArticleDelete = document.createElement("article");
+      divSectionArticleDelete.classList.add("Section__article-delete");
       article.appendChild(dropDownNews);
       dropDownNews.appendChild(newstitle);
       divNewsWrapper.appendChild(dropDownNews);
+      divNewsWrapper.appendChild(divSectionArticleDelete);
       dropDownNews.appendChild(newsAbstract);
       dropDownNews.appendChild(newsimage);
       newstitle.textContent = response.data.results[index].title;
       newsAbstract.textContent = response.data.results[index]["abstract"];
       newsimage.src = response.data.results[index].multimedia[0].url;
-      var divSectionArticleDeleteDiv = document.createElement("article");
-      divSectionArticleDeleteDiv.classList.add("Section__article-div-delete");
     }
 
     dropDownButton.addEventListener("click", function (e) {
