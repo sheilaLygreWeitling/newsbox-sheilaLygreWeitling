@@ -1,10 +1,10 @@
 "use strict";
 
 var sections = ["world"
-/*     "health",
-    "sports",
-    "business",
-    "travel" */
+/* "health",
+"sports",
+"business",
+"travel" */
 ];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 sections.forEach(function (element) {

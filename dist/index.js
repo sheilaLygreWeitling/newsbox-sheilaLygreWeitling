@@ -3,10 +3,10 @@
 var newsURL = window.location.search;
 var params = new URLSearchParams(newsURL);
 var newsCategory = ["world"
-/* "health",
+/*  "health",
 "sports",
 "business",
-"travel" */
+"travel"  */
 ];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
@@ -44,8 +44,10 @@ function createNews(element) {
     dropDownButton.appendChild(dropDownIcon);
 
     for (var index = 0; index < response.data.results.length; index++) {
-      var dropDownNews = document.createElement("div");
+      var dropDownNews = document.createElement("section");
       dropDownNews.classList.add("dropDownNewsSection");
+      var dropDownNewsFlexbox = document.createElement("div");
+      dropDownNewsFlexbox.classList.add("dropDownNews__Section-flexbox");
       var newstitle = document.createElement("h2");
       newstitle.classList.add("dropDownNewsTitle");
       var newsAbstract = document.createElement("p");
@@ -54,15 +56,22 @@ function createNews(element) {
       newsimage.classList.add("newsImage");
       var divSectionArticleDelete = document.createElement("article");
       divSectionArticleDelete.classList.add("Section__article-delete");
+      var archiveButton = document.createElement("i");
+      archiveButton.classList.add("fas", "fa-bookmark");
+      divNewsWrapper.appendChild(divSectionArticleDelete);
+      divSectionArticleDelete.appendChild(archiveButton);
       article.appendChild(dropDownNews);
       dropDownNews.appendChild(newstitle);
       divNewsWrapper.appendChild(dropDownNews);
-      divNewsWrapper.appendChild(divSectionArticleDelete);
       dropDownNews.appendChild(newsAbstract);
       dropDownNews.appendChild(newsimage);
-      newstitle.textContent = response.data.results[index].title;
-      newsAbstract.textContent = response.data.results[index]["abstract"];
+      dropDownNews.appendChild(dropDownNewsFlexbox);
+      dropDownNewsFlexbox.appendChild(newstitle);
+      dropDownNewsFlexbox.appendChild(newsAbstract);
+      newstitle.textContent = response.data.results[index].title.substring(0, 28) + "...";
+      newsAbstract.textContent = response.data.results[index]["abstract"].substring(0, 54) + "...";
       newsimage.src = response.data.results[index].multimedia[0].url;
+      archiveButton.addEventListener("click", function (e) {});
     }
 
     dropDownButton.addEventListener("click", function (e) {
@@ -78,11 +87,11 @@ function createNews(element) {
     var touchElement;
     var deleteButtonWidth = window.screen.width * 40 / 100;
     divNewsWrapper.addEventListener("touchstart", function (e) {
-      if (e.target.tagName === "DIV") {
+      if (e.target.tagName === "SECTION") {
         touchElement = e.target;
         touchCoordinateStart = e.touches[0].clientX;
         touchElement.addEventListener("touchmove", function (e) {
-          if (touchElement.tagName === "DIV") {
+          if (touchElement.tagName === "SECTION") {
             touchCoordinateMove = Math.floor(e.touches[0].clientX);
 
             if (touchCoordinateMove < touchCoordinateStart && touchCoordinateMove > touchCoordinateStart - deleteButtonWidth) {
@@ -91,7 +100,7 @@ function createNews(element) {
           }
         });
         touchElement.addEventListener("touchend", function (e) {
-          if (touchElement.tagName === "DIV") {
+          if (touchElement.tagName === "SECTION") {
             touchCoordinateEnd = Math.floor(e.changedTouches[0].clientX);
 
             if (touchCoordinateEnd < touchCoordinateStart - deleteButtonWidth / 2) {

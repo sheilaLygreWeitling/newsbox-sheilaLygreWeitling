@@ -3,10 +3,10 @@ let params = new URLSearchParams(newsURL);
 
 let newsCategory = [
     "world",
-    /* "health",
+    /*  "health",
     "sports",
     "business",
-    "travel" */
+    "travel"  */
 ];
 
 let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
@@ -56,8 +56,11 @@ function createNews(element) {
 
             for (let index = 0; index < response.data.results.length; index++) {
 
-                let dropDownNews = document.createElement("div")
+                let dropDownNews = document.createElement("section")
                 dropDownNews.classList.add("dropDownNewsSection")
+
+                let dropDownNewsFlexbox = document.createElement("div")
+                dropDownNewsFlexbox.classList.add("dropDownNews__Section-flexbox")
 
                 let newstitle = document.createElement("h2")
                 newstitle.classList.add("dropDownNewsTitle")
@@ -71,17 +74,29 @@ function createNews(element) {
                 let divSectionArticleDelete = document.createElement("article");
                 divSectionArticleDelete.classList.add("Section__article-delete");
 
+                let archiveButton = document.createElement("i")
+                archiveButton.classList.add("fas", "fa-bookmark")
+
+                divNewsWrapper.appendChild(divSectionArticleDelete);
+                divSectionArticleDelete.appendChild(archiveButton);
                 article.appendChild(dropDownNews);
                 dropDownNews.appendChild(newstitle);
                 divNewsWrapper.appendChild(dropDownNews)
-                divNewsWrapper.appendChild(divSectionArticleDelete)
                 dropDownNews.appendChild(newsAbstract);
                 dropDownNews.appendChild(newsimage);
+                dropDownNews.appendChild(dropDownNewsFlexbox)
+
+                dropDownNewsFlexbox.appendChild(newstitle)
+                dropDownNewsFlexbox.appendChild(newsAbstract)
 
 
-                newstitle.textContent = response.data.results[index].title
-                newsAbstract.textContent = response.data.results[index].abstract
+                newstitle.textContent = response.data.results[index].title.substring(0, 28) + "..."
+                newsAbstract.textContent = response.data.results[index].abstract.substring(0, 54) + "..."
                 newsimage.src = response.data.results[index].multimedia[0].url
+
+                archiveButton.addEventListener("click", (e) => {
+
+                })
             }
 
             dropDownButton.addEventListener("click", (e) => {
@@ -98,13 +113,13 @@ function createNews(element) {
             let deleteButtonWidth = (window.screen.width * 40) / 100;
 
             divNewsWrapper.addEventListener("touchstart", (e) => {
-                if (e.target.tagName === "DIV") {
+                if (e.target.tagName === "SECTION") {
                     touchElement = e.target;
 
                     touchCoordinateStart = e.touches[0].clientX;
 
                     touchElement.addEventListener("touchmove", (e) => {
-                        if (touchElement.tagName === "DIV") {
+                        if (touchElement.tagName === "SECTION") {
                             touchCoordinateMove = Math.floor(e.touches[0].clientX);
                             if (touchCoordinateMove < touchCoordinateStart && touchCoordinateMove > touchCoordinateStart - deleteButtonWidth) {
                                 touchElement.style.transform = `translateX(${touchCoordinateMove - touchCoordinateStart}px)`
@@ -113,7 +128,7 @@ function createNews(element) {
                     });
 
                     touchElement.addEventListener("touchend", (e) => {
-                        if (touchElement.tagName === "DIV") {
+                        if (touchElement.tagName === "SECTION") {
                             touchCoordinateEnd = Math.floor(e.changedTouches[0].clientX);
                             if (touchCoordinateEnd < touchCoordinateStart - deleteButtonWidth / 2) {
                                 touchElement.style.transform = `translateX(-${deleteButtonWidth}px)`;
@@ -125,6 +140,8 @@ function createNews(element) {
                 };
             });
         });
+
+
 }
 
 
