@@ -3,10 +3,10 @@ let params = new URLSearchParams(newsURL);
 
 let newsCategory = [
     "world",
-    /* "health",
+    "health",
     "sports",
     "business",
-     "travel"  */
+    "travel"
 ];
 
 let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
@@ -151,68 +151,3 @@ function createNews(element) {
             });
         });
 }
-
-/* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
-    let userObject = {
-        id: parentElement.id,
-        name: parentElement.querySelector(".animate__animated-jokeItem").textContent,
-    };
-    recycle = recycle.filter((item) => userObject.id != item.id);
-
-    if (recycle.length > 0) {
-        localStorage.setItem("deletedItems", JSON.stringify(recycle));
-    } else {
-        localStorage.clear();
-    }
-
-    parentElement.classList.add("animate__fadeOutLeft")
-    setTimeout(() => {
-        parentElement.classList.add("collapsed");
-    }, 800);
-    setTimeout(() => {
-        parentElement.remove();
-    }, 900);
-}; */
-
-
-
-/*         document.querySelector(".Main").addEventListener("click", (e) => {
-            if (e.target.tagName === "I") {
-                touchElement = e.target
-                parentElement = e.target.closest("div");
-
-
-
-                parentElement.classList.add("animate__fadeOutDown")
-                setTimeout(() => {
-                    parentElement.classList.add("open");
-                }, 800);
-            }
-        });
-    }); */
-
-
-
-
-
-/* const newsSection = document.querySelector(".Main")
-newsSection.innerHTML += `
-            <section class="Main__section Section">
-        <article class="Section__article">
-            <div class="Section__article-div">
-                <div class="Div">
-                    <img src="/images/newsSectionIcon.png" alt="health">
-                </div>
-                <div class="Div">
-                    <h1>HEALTH</h1>
-                </div>
-                <div class="Div__dropDown">
-                    <button class="Div__dropDown-button">
-                        <i class="fas fa-chevron-down"></i></button>
-                    </button>
-                </div>
-            </div>
-        </article>
-    </section>
-        `
- */

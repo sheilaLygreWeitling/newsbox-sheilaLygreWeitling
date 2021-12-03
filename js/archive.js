@@ -2,10 +2,10 @@ let savedItems = JSON.parse(localStorage.getItem("savedItems"));
 
 let newsCategory = [
     "world",
-    /*  "health",
+    "health",
     "sports",
     "business",
-    "travel"  */
+    "travel"
 ];
 
 newsCategory.forEach(element => {
