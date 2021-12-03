@@ -32,8 +32,8 @@
   transition: height 1s ease;
   overflow-y: hidden;
   height: 0;
-  display: grid;
-  grid-template: 100%/1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .dropDownNewsSection {
@@ -43,6 +43,10 @@
   display: grid;
   grid-template-columns: 25% 1fr 12.5%;
   border-bottom: 1px solid #f0f3f4;
+}
+
+.div-container {
+  display: grid;
 }
 
 .dropDownNewsTitle {
@@ -64,6 +68,7 @@
 
 .Section__article-delete {
   background-color: #87bcbf;
+  display: grid;
   grid-area: 1/1/2/2;
   display: grid;
   grid-template: 100px/25% 50% 1fr;

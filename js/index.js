@@ -3,10 +3,10 @@ let params = new URLSearchParams(newsURL);
 
 let newsCategory = [
     "world",
-    /*  "health",
+    /* "health",
     "sports",
     "business",
-    "travel"  */
+     "travel"  */
 ];
 
 let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
@@ -56,6 +56,9 @@ function createNews(element) {
 
             for (let index = 0; index < response.data.results.length; index++) {
 
+                let divContainer = document.createElement("div")
+                divContainer.classList.add("div-container")
+
                 let dropDownNews = document.createElement("section")
                 dropDownNews.classList.add("dropDownNewsSection")
 
@@ -77,26 +80,23 @@ function createNews(element) {
                 let archiveButton = document.createElement("i")
                 archiveButton.classList.add("fas", "fa-bookmark")
 
-                divNewsWrapper.appendChild(divSectionArticleDelete);
+                divContainer.appendChild(divSectionArticleDelete);
                 divSectionArticleDelete.appendChild(archiveButton);
-                article.appendChild(dropDownNews);
-                dropDownNews.appendChild(newstitle);
-                divNewsWrapper.appendChild(dropDownNews)
+
+                divNewsWrapper.appendChild(divContainer);
+
+                divContainer.appendChild(dropDownNews);
+
                 dropDownNews.appendChild(newsAbstract);
                 dropDownNews.appendChild(newsimage);
-                dropDownNews.appendChild(dropDownNewsFlexbox)
+                dropDownNews.appendChild(dropDownNewsFlexbox);
 
-                dropDownNewsFlexbox.appendChild(newstitle)
-                dropDownNewsFlexbox.appendChild(newsAbstract)
-
+                dropDownNewsFlexbox.appendChild(newstitle);
+                dropDownNewsFlexbox.appendChild(newsAbstract);
 
                 newstitle.textContent = response.data.results[index].title.substring(0, 28) + "..."
                 newsAbstract.textContent = response.data.results[index].abstract.substring(0, 54) + "..."
                 newsimage.src = response.data.results[index].multimedia[0].url
-
-                archiveButton.addEventListener("click", (e) => {
-
-                })
             }
 
             dropDownButton.addEventListener("click", (e) => {
@@ -106,6 +106,7 @@ function createNews(element) {
                     divNewsWrapper.classList.add("open")
                 }
             });
+
             let touchCoordinateStart;
             let touchCoordinateMove;
             let touchCoordinateEnd;
@@ -140,8 +141,6 @@ function createNews(element) {
                 };
             });
         });
-
-
 }
 
 

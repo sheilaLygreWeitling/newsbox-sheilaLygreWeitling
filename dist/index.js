@@ -3,10 +3,10 @@
 var newsURL = window.location.search;
 var params = new URLSearchParams(newsURL);
 var newsCategory = ["world"
-/*  "health",
+/* "health",
 "sports",
 "business",
-"travel"  */
+ "travel"  */
 ];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + myAPIKey;
@@ -44,6 +44,8 @@ function createNews(element) {
     dropDownButton.appendChild(dropDownIcon);
 
     for (var index = 0; index < response.data.results.length; index++) {
+      var divContainer = document.createElement("div");
+      divContainer.classList.add("div-container");
       var dropDownNews = document.createElement("section");
       dropDownNews.classList.add("dropDownNewsSection");
       var dropDownNewsFlexbox = document.createElement("div");
@@ -58,11 +60,10 @@ function createNews(element) {
       divSectionArticleDelete.classList.add("Section__article-delete");
       var archiveButton = document.createElement("i");
       archiveButton.classList.add("fas", "fa-bookmark");
-      divNewsWrapper.appendChild(divSectionArticleDelete);
+      divContainer.appendChild(divSectionArticleDelete);
       divSectionArticleDelete.appendChild(archiveButton);
-      article.appendChild(dropDownNews);
-      dropDownNews.appendChild(newstitle);
-      divNewsWrapper.appendChild(dropDownNews);
+      divNewsWrapper.appendChild(divContainer);
+      divContainer.appendChild(dropDownNews);
       dropDownNews.appendChild(newsAbstract);
       dropDownNews.appendChild(newsimage);
       dropDownNews.appendChild(dropDownNewsFlexbox);
@@ -71,7 +72,6 @@ function createNews(element) {
       newstitle.textContent = response.data.results[index].title.substring(0, 28) + "...";
       newsAbstract.textContent = response.data.results[index]["abstract"].substring(0, 54) + "...";
       newsimage.src = response.data.results[index].multimedia[0].url;
-      archiveButton.addEventListener("click", function (e) {});
     }
 
     dropDownButton.addEventListener("click", function (e) {
