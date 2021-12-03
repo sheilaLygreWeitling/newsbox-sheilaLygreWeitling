@@ -74,6 +74,14 @@
 	grid-template: 100px/25% 50% 1fr;
 }
 
+.archiveButton {
+	color: black;
+	grid-area: 1/3/2/4;
+	place-self: center;
+	border: none;
+	background-color: #87bcbf;
+}
+
 .fa-bookmark {
 	color: black;
 	grid-area: 1/3/2/4;

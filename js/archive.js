@@ -1,3 +1,5 @@
+let savedItems = JSON.parse(localStorage.getItem("savedItems"));
+
 let newsCategory = [
     "world",
     /*  "health",

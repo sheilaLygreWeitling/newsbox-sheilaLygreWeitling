@@ -77,11 +77,15 @@ function createNews(element) {
                 let divSectionArticleDelete = document.createElement("article");
                 divSectionArticleDelete.classList.add("Section__article-delete");
 
-                let archiveButton = document.createElement("i")
-                archiveButton.classList.add("fas", "fa-bookmark")
+                let archiveButton = document.createElement("button")
+                archiveButton.classList.add("archiveButton")
+
+                let archiveIcon = document.createElement("i")
+                archiveIcon.classList.add("fas", "fa-bookmark")
 
                 divContainer.appendChild(divSectionArticleDelete);
                 divSectionArticleDelete.appendChild(archiveButton);
+                archiveButton.appendChild(archiveIcon);
 
                 divNewsWrapper.appendChild(divContainer);
 
@@ -97,7 +101,12 @@ function createNews(element) {
                 newstitle.textContent = response.data.results[index].title.substring(0, 28) + "..."
                 newsAbstract.textContent = response.data.results[index].abstract.substring(0, 54) + "..."
                 newsimage.src = response.data.results[index].multimedia[0].url
-            }
+
+                archiveButton.addEventListener("click", (e) => {
+                    console.log("HEJ");
+
+                });
+            };
 
             dropDownButton.addEventListener("click", (e) => {
                 if (divNewsWrapper.classList.contains("open")) {
@@ -142,24 +151,6 @@ function createNews(element) {
             });
         });
 }
-
-
-
-
-
-
-/*         document.querySelector(".fas").addEventListener("click", () => {
-            function show_hide() {
-                if (document.querySelector(".dropDownNews").style.display === "none") {
-                    document.querySelector(".dropDownNews").style.display = "block";
-                } else {
-                    document.querySelector(".dropDownNews").style.display = "none";
-                }
-            } show_hide();
-        }); */
-
-
-
 
 /* parentElement.querySelector(".news_DeletedItem").onclick = (e) => {
     let userObject = {

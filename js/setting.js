@@ -57,6 +57,4 @@ sections.forEach(element => {
                 });
             } categorySwitchFunction(togglebutton);
         });
-
-
 });
