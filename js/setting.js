@@ -1,9 +1,9 @@
 const sections = [
     "world",
-    /* "health",
+    "health",
     "sports",
     "business",
-    "travel" */
+    "travel"
 ]
 
 let myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";

@@ -1,11 +1,6 @@
 "use strict";
 
-var sections = ["world"
-/* "health",
-"sports",
-"business",
-"travel" */
-];
+var sections = ["world", "health", "sports", "business", "travel"];
 var myAPIKey = "RJ9oWjSESWwzZYmsAw6r1GxXh2G8uh7F";
 sections.forEach(function (element) {
   axios.get("https://api.nytimes.com/svc/topstories/v2/".concat(element, ".json?api-key=").concat(myAPIKey)).then(function (response) {
